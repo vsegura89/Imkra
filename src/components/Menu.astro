@@ -1,0 +1,31 @@
+---
+import MenuCard from "./MenuCard.astro";
+import {combos, extras} from "../data/menus.ts";
+---
+
+<section class="py-20 sm:py-24 lg:py-32 bg-background-light dark:bg-background-dark" id="ofertas">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-primary dark:text-primary mb-2">Ofertas
+                Especiales</h2>
+            <p class="text-lg text-text-light dark:text-text-dark max-w-2xl mx-auto">Aprovecha nuestros
+                combos y promociones. ¡No te los pierdas!</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {Object.entries(combos).map(([id, {title, description, price, img}]) => (
+                    <MenuCard id={id} title={title} description={description} price={price} img={img}/>))}
+        </div>
+
+        <hr class="h-px my-8 bg-primary/20  border-0 dark:bg-gray-700">
+
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-primary dark:text-primary mb-2">Extras</h2>
+            <p class="text-lg text-text-light dark:text-text-dark max-w-2xl mx-auto">Quieres otros acompañamientos.
+                ¡Pídelos!</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Object.entries(extras).map(([id, {title, description, price, img}]) => (
+                    <MenuCard id={id} title={title} description={description} price={price} img={img}/>))}
+        </div>
+    </div>
+</section>

@@ -1,36 +1,16 @@
 ---
-
+import Image from "astro/components/Image.astro";
+import logo from "../assets/logo41.png";
+import Button from "./Button.astro";
 ---
 
 <header class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-10 py-5 bg-gradient-to-b from-black/50 to-transparent">
     <div class="container mx-auto flex items-center justify-between">
         <a class="flex items-center gap-2" href="#">
-            <img alt="Crispy Chicken Logo" class="h-10 w-10"
-                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHNNoSqu9jbz4IoY9t-azWatFpsyunqNL-uWfS2iKnMDrYtA92Xad8wsQdnzQtfoGGIpGndOyspMLuyT7rAmmS2BcGvfA73LKWTYOD5gSqUtlUfn-cifGe5qdVhkZ3PZNbOch2fEM_noUpY1j9ljyHQknZqZPatlvCAWUyfNDb2RX6v07Pm5eNw7ASeJ0mof6zrYD5DnbrDHJfuBmMsOXpaQtdYRm9zyD0DKaXjpHa-z1dUMf32zMXtObDDvuTjLxSbwZ75JewyEk"/>
-            <h2 class="text-3xl font-black text-white text-shadow">Crispy Chicken</h2>
+            <Image alt="Imkra Chicken Logo" class="md:size-40 size-15 brightness-90" src={logo}/>
+            <h2 class="md:text-3xl text-xl font-black text-primary text-shadow uppercase text-center"> imkra <span
+                    class="text-background-light">Chicken</span></h2>
         </a>
-        <nav class="hidden md:flex items-center gap-8">
-            <a class="text-base font-medium text-white hover:text-primary transition-colors text-shadow"
-               href="#ofertas">Ofertas</a>
-            <a class="text-base font-medium text-white hover:text-primary transition-colors text-shadow"
-               href="#menu">Menú</a>
-            <a class="text-base font-medium text-white hover:text-primary transition-colors text-shadow"
-               href="#">Nosotros</a>
-            <a class="text-base font-medium text-white hover:text-primary transition-colors text-shadow"
-               href="#">Contacto</a>
-        </nav>
-        <div class="flex items-center gap-4">
-            <!--<a class="bg-primary text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-primary-dark transition-colors shadow-lg"-->
-            <!--   href="#">-->
-            <!--    Ordenar Ahora-->
-            <!--</a>-->
-            <button class="md:hidden text-white">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"></path>
-                </svg>
-            </button>
-        </div>
+        <!--<Button/>-->
     </div>
 </header>

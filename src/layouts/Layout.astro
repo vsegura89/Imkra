@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import logo from '../assets/favicon7.png';
 ---
 
 <!--<!doctype html>-->
@@ -7,14 +8,14 @@ import '../styles/global.css';
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="generator" content={Astro.generator}/>
-    <title>Astro Basics</title>
+    <link rel="icon" type="image/svg+xml" href={logo.src}/>
+    <title>Imkra chickens</title>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
-<div class="relative min-h-screen w-full">
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark relative min-h-screen w-full">
+<!--<div class="relative min-h-screen w-full">-->
     <slot/>
-</div>
+<!--</div>-->
+<!--    <CartModal client:load/>-->
 </body>
 </html>
 

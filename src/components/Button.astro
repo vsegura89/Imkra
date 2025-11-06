@@ -1,0 +1,19 @@
+---
+import CartIcon from "../icons/CartIcon.astro";
+---
+
+<button type="button"
+        id="cart-button"
+        class="relative inline-flex items-center gap-1 px-5 py-2.5 text-sm font-medium text-center text-white bg-primary rounded-full hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-secondary">
+    <CartIcon/>
+    <span class="max-[25rem]:hidden ">Tu pedido</span>
+    <span class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-gray-900 bg-secondary rounded-full -top-2 -end-2">
+        8
+    </span>
+</button>
+
+<!--<script>-->
+<!--    const cartButton = document.getElementById('cart-button');-->
+
+<!--    console.log(cartButton)-->
+<!--</script>-->

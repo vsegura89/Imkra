@@ -1,0 +1,22 @@
+---
+import heroImg from "../assets/hero.png";
+import {Image} from "astro:assets";
+---
+
+<section class="relative h-[90vh] md:h-screen flex items-center justify-center">
+    <Image src={heroImg} alt="Hero Image"  class="absolute inset-0 w-full h-full object-cover brightness-50"/>
+    <div class="container relative z-10 text-center text-white px-4">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 text-shadow uppercase tracking-tight">
+            <span class="text-secondary">Sabor</span> que te hace volver
+        </h1>
+        <!--</div>-->
+        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-shadow font-light">
+            El pollo frito más crujiente y jugoso que probarás. Preparado al momento con nuestra receta secreta. ¡Pídelo
+            ya!
+        </p>
+        <a class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 shadow-2xl"
+           href="#ofertas">
+            Ver el Menú
+        </a>
+    </div>
+</section>
