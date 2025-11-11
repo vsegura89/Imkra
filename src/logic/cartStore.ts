@@ -1,53 +1,88 @@
-// Cart logic for client-side usage in Astro components
-// Persistence: localStorage
-// Lightweight pub/sub to notify UI about changes
+import {atom, map} from 'nanostores'
+import {menu} from "../data/menus.ts";
 
-type CartItem = Record<string, number> // { id1: quantity1, id2: quantity2, ... }
 
-const state = {
-    orderItems: {} as CartItem,
-    showCart: false,
+export type CartItem = Record<string, number> // { id1: quantity1, id2: quantity2, ... }
+
+export const isCartOpen = atom(false)
+export const cartItems = map<CartItem>({})
+export const menuItems = atom<Menu>(menu)
+
+export const addItem = (id: string) => {
+    const quantity = cartItems.get()[id] ?? 0;
+    cartItems.setKey(id, quantity + 1);
 }
-
-const addItem = (id: string) => {
-    const quantity = state.orderItems[id] ?? 0;
-    state.orderItems[id] = quantity + 1;
-}
-
-const removeOrDeleteItem = (id: string) => {
-    const quantity = state.orderItems[id] ?? 0;
-    if (quantity > 1) {
-        state.orderItems[id] = quantity - 1;
-    } else {
-        delete state.orderItems[id];
+export const removeOrDeleteItem = (id: string) => {
+    const quantity = cartItems.get()[id] ?? 0;
+    if (quantity > 1){
+        cartItems.setKey(id, quantity - 1);
+    }else {
+        cartItems.setKey(id, undefined);
     }
 }
-
-
-const deleteItem = (id: string) => {
-    delete state.orderItems[id];
+export const deleteItem = (id: string) => {
+    cartItems.setKey(id, undefined);
+}
+export const clearCart = () => {
+    cartItems.set({});
+}
+export const toggleIsCartOpen = () => {
+    isCartOpen.set(!isCartOpen.get());
 }
 
-const toggleCart = () => {
-    state.showCart = !state.showCart;
+export const getTotalQuantity = () => {
+    return Object.values(cartItems.get()).reduce((sum, quantity) => sum + quantity, 0);
 }
 
-const clearCart = () => {
-    state.orderItems = {};
-}
+// const getMenuItem = (id: string) => {
+//     return menuItems.get()[id] || null;
+// }
+
+// const state = {
+//     orderItems: {} as CartItem,
+//     showCart: false,
+// }
+
+// const addItem = (id: string) => {
+//     const quantity = state.orderItems[id] ?? 0;
+//     state.orderItems[id] = quantity + 1;
+// }
+
+// const removeOrDeleteItem = (id: string) => {
+//     const quantity = state.orderItems[id] ?? 0;
+//     if (quantity > 1) {
+//         state.orderItems[id] = quantity - 1;
+//     } else {
+//         delete state.orderItems[id];
+//     }
+// }
 
 
-export const useCart = () => {
-    return {
-        orderItems: state.orderItems,
-        showCart: state.showCart,
-        addItem,
-        removeOrDeleteItem,
-        deleteItem,
-        toggleCart,
-        clearCart,
-    }
-}
+// const deleteItem = (id: string) => {
+//     delete state.orderItems[id];
+// }
+
+// const toggleCart = () => {
+//     state.showCart = !state.showCart;
+// }
+
+// const clearCart = () => {
+//     state.orderItems = {};
+// }
+
+
+// export const useCart = () => {
+//     return {
+//         cartItems,
+//         menuItems,
+//         isCartOpen,
+//         addItem,
+//         removeOrDeleteItem,
+//         deleteItem,
+//         toggleIsCartOpen,
+//         clearCart,
+//     }
+// }
 
 
 

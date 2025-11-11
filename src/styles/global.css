@@ -3,8 +3,8 @@
 @theme {
     --color-primary: var(--color-orange-500);
     --color-primary-dark: var(--color-orange-600);
-    --color-secondary: var(--color-amber-300);
-    --color-secondary-dark: var(--color-amber-400);
+    --color-secondary: var(--color-amber-400);
+    --color-secondary-dark: var(--color-amber-500);
     --color-background-light: var(--color-amber-50);
     --color-background-dark: #1C1917;
     --color-text-light: #57534E;

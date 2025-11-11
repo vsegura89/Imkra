@@ -9,9 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/solid-js": "^5.1.3",
+    "@nanostores/solid": "^1.1.1",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
+    "nanostores": "^1.0.1",
     "sharp": "^0.34.5",
+    "solid-js": "^1.9.10",
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {

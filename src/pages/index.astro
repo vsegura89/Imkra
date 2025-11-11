@@ -3,10 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Main from "../components/Main.astro";
 import Footer from "../components/Footer.astro";
+import CloseIcon from "../assets/icons/close.svg";
+import CartIcon from "../assets/icons/shopping-cart.svg";
+import CartModal from "../components/solid/CartModal.tsx";
+import RemoveIcon from "../assets/icons/remove.svg";
+import AddIcon from "../assets/icons/add.svg";
+import TrashIcon from "../assets/icons/trash.svg";
+import WhatsappIcon from "../assets/icons/whatsapp.svg";
 ---
 
 <Layout>
     <Header/>
     <Main/>
     <Footer/>
+    <CartModal client:load>
+        <CartIcon slot="cartIcon" fill="currentColor"/>
+        <CloseIcon slot="closeIcon" fill="currentColor" />
+        <RemoveIcon slot="removeIcon" fill="currentColor" />
+        <AddIcon slot="addIcon" fill="currentColor" />
+        <TrashIcon slot="trashIcon" fill="currentColor" />
+        <WhatsappIcon slot="whatsappIcon" fill="currentColor" />
+    </CartModal>
 </Layout>

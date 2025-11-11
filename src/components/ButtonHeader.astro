@@ -1,0 +1,31 @@
+---
+import CartIcon from "../assets/icons/shopping-cart.svg";
+---
+
+<button type="button"
+        id="cart-button"
+        class="relative inline-flex items-center gap-1 px-5 py-2.5 text-sm font-medium text-center text-white bg-primary rounded-full hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-secondary">
+    <CartIcon fill="currentColor" />
+    <span class="max-[25rem]:hidden ">Tu pedido</span>
+    <span id="cart-total-indicator" hidden class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-gray-900 bg-secondary rounded-full -top-2 -end-2">
+
+    </span>
+</button>
+
+<script>
+    import {toggleIsCartOpen, cartItems, getTotalQuantity} from "../logic";
+    const cartButton = document.getElementById('cart-button');
+    const cartTotalIndicator = document.getElementById('cart-total-indicator');
+    cartItems.subscribe(items => {
+        if (cartTotalIndicator) {
+            const count = getTotalQuantity()
+            if (count > 0) {
+                cartTotalIndicator.removeAttribute('hidden')
+            } else {
+                cartTotalIndicator.setAttribute('hidden', '')
+            }
+            cartTotalIndicator.textContent = String(count);
+        }
+    })
+    cartButton?.addEventListener('click', toggleIsCartOpen)
+</script>

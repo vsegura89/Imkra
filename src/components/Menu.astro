@@ -1,6 +1,8 @@
 ---
 import MenuCard from "./MenuCard.astro";
-import {combos, extras} from "../data/menus.ts";
+import {menu} from "../data/menus.ts";
+const combos = Object.entries(menu).filter(([id, {category}])=> category === 'combo' )
+const extras = Object.entries(menu).filter(([id, {category}])=> category === 'extra' )
 ---
 
 <section class="py-20 sm:py-24 lg:py-32 bg-background-light dark:bg-background-dark" id="ofertas">
@@ -12,7 +14,7 @@ import {combos, extras} from "../data/menus.ts";
                 combos y promociones. ¡No te los pierdas!</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {Object.entries(combos).map(([id, {title, description, price, img}]) => (
+            {combos.map(([id, {title, description, price, img}]) => (
                     <MenuCard id={id} title={title} description={description} price={price} img={img}/>))}
         </div>
 
@@ -24,8 +26,31 @@ import {combos, extras} from "../data/menus.ts";
                 ¡Pídelos!</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(extras).map(([id, {title, description, price, img}]) => (
+            {extras.map(([id, {title, description, price, img}]) => (
                     <MenuCard id={id} title={title} description={description} price={price} img={img}/>))}
         </div>
     </div>
 </section>
+
+<script>
+    import {addItem, cartItems} from "../logic";
+
+    const addButtons = document.querySelectorAll("button[data-type='addItemButton']");
+    const countIndicators = document.querySelectorAll("span[data-type='count-indicator']");
+
+    cartItems.subscribe(items => {
+        countIndicators.forEach(indicator => {
+            const count = cartItems.get()[indicator.dataset.id];
+            if(count > 0) {
+                indicator.removeAttribute('hidden');
+            } else {
+                indicator.setAttribute('hidden', '');
+            }
+            indicator.textContent = String(count);
+        })
+    })
+
+    addButtons.forEach((button) => {
+        button.addEventListener('click', () => addItem(button.dataset.id))
+    })
+</script>

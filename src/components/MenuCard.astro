@@ -1,8 +1,11 @@
 ---
 import {Picture} from "astro:assets";
+import AddIcon from "../assets/icons/add.svg";
 
-interface Props extends MenuItem {id: string;}
-const { id, title, description, price, img} = Astro.props;
+interface Props extends Omit<MenuItem, "category"> {
+    id: string;
+}
+const {id, title, description, price, img} = Astro.props;
 ---
 
 <div class="h-fit bg-white dark:bg-stone-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
@@ -18,9 +21,13 @@ const { id, title, description, price, img} = Astro.props;
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
             }).format(price)}</span>
-            <!--<button class="bg-primary text-white font-bold py-2 px-5 rounded-full text-sm hover:bg-primary-dark transition-colors hover:cursor-pointer">-->
-            <!--    Añadir{id}-->
-            <!--</button>-->
+            <button data-id={id} data-type="addItemButton"
+                    class=" relative
+                    items-center gap-1 text-center focus:ring-2 focus:outline-none focus:ring-primary
+                    flex bg-secondary text-gray-900 font-bold py-2 px-5 rounded-full text-sm hover:bg-secondary-dark transition-colors hover:cursor-pointer">
+                <AddIcon fill="currentColor"/> Añadir
+                <span data-id={id} data-type="count-indicator" hidden class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-primary rounded-full -top-2 -end-2"/>
+            </button>
         </div>
     </div>
 </div>

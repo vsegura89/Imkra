@@ -1,16 +1,17 @@
 ---
 import Image from "astro/components/Image.astro";
 import logo from "../assets/logo41.png";
-import Button from "./Button.astro";
+import ButtonHeader from "./ButtonHeader.astro";
 ---
 
-<header class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-10 py-5 bg-gradient-to-b from-black/50 to-transparent">
+<header class="fixed top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-10 py-1 bg-gradient-to-b from-black/50 to-transparent
+bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
     <div class="container mx-auto flex items-center justify-between">
         <a class="flex items-center gap-2" href="#">
-            <Image alt="Imkra Chicken Logo" class="md:size-40 size-15 brightness-90" src={logo}/>
+            <Image alt="Imkra Chicken Logo" class="md:size-20 size-15 brightness-90" src={logo}/>
             <h2 class="md:text-3xl text-xl font-black text-primary text-shadow uppercase text-center"> imkra <span
                     class="text-background-light">Chicken</span></h2>
         </a>
-        <!--<Button/>-->
+        <ButtonHeader/>
     </div>
 </header>
